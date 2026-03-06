@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="media-card">
+
+    <h2 id="productTitle"></h2>
+
+    <div class="image-wrapper">
+
+        <img id="productImage" alt="product image">
+
+        <!-- PLAYER -->
+        <div id="audioPanel" class="audio-panel hidden">
+
+            <button id="volDown" class="vol-btn">−</button>
+
+            <div class="play-wrapper">
+                <svg class="progress-ring" width="80" height="80">
+                    <circle class="progress-bg"
+                        stroke-width="6"
+                        fill="transparent"
+                        r="34"
+                        cx="40"
+                        cy="40"/>
+                    <circle class="progress-bar"
+                        stroke-width="6"
+                        fill="transparent"
+                        r="34"
+                        cx="40"
+                        cy="40"/>
+                </svg>
+
+                <button id="playBtn" class="play-btn">▶</button>
+            </div>
+
+            <button id="volUp" class="vol-btn">+</button>
+
+        </div>
+
+        <!-- NAV BUTTONS -->
+        <div class="nav-buttons-overlay">
+            <button id="prevBtn">◀</button>
+            <button id="homeBtn">🏠</button>
+            <button id="nextBtn">▶</button>
+        </div>
+
+    </div>
+
+    <audio id="audio"></audio>
+
+</div>
+
+<script src="products.js"></script>
+<script src="loadproduct.js"></script>
+<script src="player.js"></script>
+
+</body>
+</html>
