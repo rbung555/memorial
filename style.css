@@ -1,0 +1,225 @@
+:root {
+    --bg-color: #f5f5f7;
+    --text-color: #1d1d1f;
+    --card-bg: #ffffff;
+    --accent-color: #0071e3;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f5f5f7;
+    --card-bg: #1e1e1e;
+    --accent-color: #2997ff;
+    --overlay-bg: rgba(0, 0, 0, 0.8);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.theme-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid var(--text-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* [เพิ่มใหม่] สไตล์แถวปุ่มเมนูเลือกประเภทสินค้าด้านบน */
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* ถ้ายาวเกินจอในมือถือ ให้ขึ้นบรรทัดใหม่ */
+}
+
+/* [เพิ่มใหม่] สไตล์ปุ่มเมนูแต่ละปุ่ม */
+.category-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+/* [เพิ่มใหม่] สไตล์ของปุ่มเมนูที่กำลังถูกเลือก */
+.category-btn.active {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+/* [เพิ่มใหม่] กล่องครอบกลุ่มสินค้าแต่ละประเภท */
+.category-section {
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+/* [เพิ่มใหม่] ข้อความแสดงประเภทสินค้า กำหนดให้อยู่ตรงกลางหน้า */
+.category-title {
+    text-align: center;      /* จัดให้อยู่ตรงกลางหน้า */
+    margin: 30px 0 20px 0;
+    font-size: 28px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* คอนเทนเนอร์หลักสำหรับ Container รวมกลุ่ม */
+.container {
+    width: 100%;
+}
+
+/*ปรับจากเดิม: ย้ายสไตล์กริดมาผูกกับคลาสเพื่อใช้ซ้ำตามกลุ่มประเภท */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* รูปแบบการ์ดสินค้าใหม่ ให้เรียงรูปด้านบนและข้อความด้านล่าง */
+.product-card {
+    position: relative;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+/* กล่องครอบรูปภาพ เพื่อให้ภาพยังคงเป็นสี่เหลี่ยมจัตุรัสเท่ากันทุกชิ้น */
+.product-image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.product-card:hover img { 
+    transform: scale(1.05); 
+}
+
+/* สไตล์สำหรับกล่องชื่อสินค้าที่จะแสดงด้านล่างรูปภาพเสมอ */
+.product-name {
+    padding: 15px 10px;
+    text-align: center;
+    background-color: var(--card-bg);
+}
+
+.product-name h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* สไตล์ Pop-up คงเดิม */
+.popup-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--overlay-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+.popup-overlay.active { opacity: 1; pointer-events: auto; }
+.popup-content {
+    display: flex;
+    width: 80%;
+    max-width: 1100px;
+    max-height: 85vh;
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.popup-image-side { flex: 0 0 70%; background: #000; display: flex; align-items: center; justify-content: center; }
+.popup-image-side img { width: 100%; height: auto; max-height: 85vh; object-fit: contain; }
+.popup-detail-side { flex: 0 0 30%; display: flex; flex-direction: column; border-left: 1px solid rgba(0,0,0,0.1); }
+.popup-header-controls { flex: 0 0 20%; min-height: 70px; display: flex; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.1); padding: 10px; }
+.audio-controls { flex: 0 0 80%; display: flex; align-items: center; gap: 8px; }
+.close-btn { flex: 0 0 20%; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-color); }
+.play-btn-wrapper { position: relative; width: 44px; height: 44px; }
+.progress-ring { position: absolute; top: 0; left: 0; transform: rotate(-90deg); }
+.progress-ring__circle { transition: stroke-dashoffset 0.1s; transform-origin: 50% 50%; }
+.circle-btn { position: absolute; top: 4px; left: 4px; width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--accent-color); color: white; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+#audio-timer { font-size: 12px; min-width: 40px; }
+.vol-btn { padding: 4px 6px; font-size: 11px; cursor: pointer; border-radius: 4px; border: 1px solid var(--text-color); background: transparent; color: var(--text-color); }
+.popup-text-body { flex: 0 0 80%; padding: 20px; overflow-y: auto; }
+
+/* Responsive ทุกหน้าจอ */
+@media (max-width: 1024px) {
+    .popup-content { width: 90%; }
+    .popup-image-side { flex: 0 0 65%; }
+    .popup-detail-side { flex: 0 0 35%; }
+}
+@media (max-width: 768px) {
+    .popup-content { flex-direction: column; width: 95%; max-height: 90vh; }
+    .popup-image-side { flex: 0 0 50%; }
+    .popup-detail-side { flex: 0 0 50%; border-left: none; border-top: 1px solid rgba(0,0,0,0.1); }
+    .popup-header-controls { min-height: 60px; }
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .category-title { font-size: 22px; }
+}
+
+/* added */
+
+p  {
+  display: flex;
+    text-align: justify;
+    
+    line-height: 1.9;
+    text-wrap: pretty;
+    word-break: normal;
+    overflow-wrap: break-word;
+}

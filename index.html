@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อนุสรณ์สถาน ฯพณฯ จอมพล สฤษดิ์ ธนะรัชต์</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>รายการสิ่งของจัดแสดงอนุสรณ์สถาน ฯพณฯ จอมพล สฤษดิ์ ธนะรัชต์</h1>
+        <button id="theme-toggle" class="theme-btn">เปลี่ยนโหมดมืด/สว่าง</button>
+    </header>
+
+    <nav class="category-nav" id="category-nav">
+        </nav>
+
+    <main class="container" id="product-container">
+        </main>
+
+    <div id="product-popup" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-image-side">
+                <img id="popup-img" src="" alt="Product Image">
+            </div>
+            <div class="popup-detail-side">
+                <div class="popup-header-controls">
+                    <div class="audio-controls">
+                        <div class="play-btn-wrapper">
+                            <svg class="progress-ring" width="44" height="44">
+                                <circle class="progress-ring__circle" stroke="var(--accent-color)" stroke-width="3" fill="transparent" r="18" cx="22" cy="22"/>
+                            </svg>
+                            <button id="audio-play-pause" class="circle-btn">▶</button>
+                        </div>
+                        <span id="audio-timer">00:00</span>
+                        <button id="vol-down" class="vol-btn">🔉 -</button>
+                        <button id="vol-up" class="vol-btn">🔊 +</button>
+                    </div>
+                    <button id="popup-close" class="close-btn">✖</button>
+                </div>
+                <div id="popup-text-content" class="popup-text-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
